@@ -4,18 +4,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Muhammed Mustafa — DevOps Engineer, Systems Administrator and Infrastructure professional.">
+  <meta name="description" content="Muhammed Mustafa — DevOps Engineer and IT Infrastructure professional.">
   <title>Muhammed Mustafa | DevOps Engineer</title>
 
   <style>
     :root {
-      --bg: #0b1120;
-      --panel: #111a2e;
-      --text: #eef3ff;
-      --muted: #a9b6cf;
-      --accent: #62d5c8;
-      --border: rgba(180,198,230,.16);
-      --max-width: 1120px;
+      --bg: #07111f;
+      --panel: #0d1b2d;
+      --panel-light: #12243a;
+      --text: #eaf2fb;
+      --muted: #a8b8ca;
+      --accent: #35d0ba;
+      --border: rgba(255,255,255,.10);
     }
 
     * { box-sizing: border-box; }
@@ -24,727 +24,513 @@
 
     body {
       margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
       color: var(--text);
-      background:
-        radial-gradient(circle at 10% 0%, rgba(65,108,190,.18), transparent 32rem),
-        radial-gradient(circle at 95% 20%, rgba(40,180,160,.10), transparent 28rem),
-        var(--bg);
-      font-family: "Segoe UI", Arial, sans-serif;
-      line-height: 1.7;
+      line-height: 1.65;
     }
 
-    a { color: inherit; }
+    a { color: inherit; text-decoration: none; }
 
     .container {
-      width: min(var(--max-width), calc(100% - 40px));
-      margin: auto;
+      width: min(1100px, 92%);
+      margin: 0 auto;
     }
 
     header {
       position: sticky;
       top: 0;
       z-index: 10;
-      background: rgba(11,17,32,.92);
-      backdrop-filter: blur(14px);
+      background: rgba(7,17,31,.92);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
 
-    .nav {
+    nav {
       min-height: 70px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
-    }
-
-    .brand {
-      font-size: 1.2rem;
-      font-weight: 800;
-      text-decoration: none;
-    }
-
-    .brand span, h1 span { color: var(--accent); }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
       gap: 20px;
     }
 
-    nav a {
-      color: var(--muted);
-      font-size: .9rem;
-      text-decoration: none;
+    .brand {
+      font-weight: 800;
+      letter-spacing: .3px;
     }
 
-    nav a:hover { color: var(--accent); }
+    .brand span { color: var(--accent); }
 
-    /* Hero section: text left, photo right */
-    .hero { padding: 72px 0 64px; }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      color: var(--muted);
+      font-size: .94rem;
+    }
 
-    .hero-inner {
+    .nav-links a:hover { color: var(--accent); }
+
+    section { padding: 76px 0; }
+
+    .hero { padding: 76px 0 88px; }
+
+    .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 360px;
+      grid-template-columns: 1.35fr .65fr;
       align-items: center;
-      gap: 56px;
+      gap: 50px;
     }
 
     .eyebrow {
       color: var(--accent);
       text-transform: uppercase;
       letter-spacing: 2px;
-      font-size: .78rem;
-      font-weight: 800;
-      margin-bottom: 14px;
+      font-size: .82rem;
+      font-weight: 700;
     }
 
     h1 {
-      font-size: clamp(2.7rem, 5.5vw, 4.5rem);
-      line-height: 1.1;
-      letter-spacing: -1.5px;
-      margin: 0 0 18px;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      line-height: 1.08;
+      margin: 14px 0 18px;
     }
 
-    .hero h2 {
-      color: #cbd7ee;
-      font-size: clamp(1.15rem, 2.4vw, 1.5rem);
-      margin: 0 0 18px;
+    h1 span { color: var(--accent); }
+
+    h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      line-height: 1.2;
+      margin: 0 0 22px;
     }
 
-    .intro {
-      max-width: 670px;
+    h3 {
+      margin: 0 0 10px;
+      font-size: 1.18rem;
+    }
+
+    p {
       color: var(--muted);
-      font-size: 1.05rem;
-      margin-bottom: 28px;
+      margin: 0 0 16px;
     }
 
-    .hero-image {
-  width: 360px;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-  border-radius: 24px;
-    }
-
-    .hero-image img {
-  width: 100%;
-  height: 85%;
-  object-fit: cover;
-  object-position: center 35%;
-  display: block;
+    .hero-copy {
+      max-width: 680px;
+      font-size: 1.08rem;
     }
 
     .actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
+      margin-top: 28px;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 11px 17px;
-      border-radius: 10px;
+      padding: 11px 18px;
+      border-radius: 9px;
       font-weight: 700;
-      text-decoration: none;
-      border: 1px solid var(--border);
-      transition: .2s;
-    }
-
-    .btn-primary {
-      color: #071521;
+      border: 1px solid var(--accent);
       background: var(--accent);
-      border-color: var(--accent);
+      color: #06141e;
+      transition: transform .2s ease, opacity .2s ease;
+      cursor: pointer;
     }
 
-    .btn-secondary { background: rgba(255,255,255,.03); }
-
-    .btn:hover { transform: translateY(-2px); }
-
-    section {
-      padding: 34px 0 48px;
-      scroll-margin-top: 90px;
+    .btn:hover {
+      transform: translateY(-2px);
+      opacity: .92;
     }
 
-    .section-heading { margin-bottom: 24px; }
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--border);
+    }
 
-    .section-heading > p:first-child {
+    .photo-wrap {
+      width: min(310px, 100%);
+      aspect-ratio: 1;
+      margin: 0 auto;
+      border-radius: 26px;
+      padding: 8px;
+      border: 1px solid rgba(53,208,186,.5);
+      background: linear-gradient(
+        145deg,
+        rgba(53,208,186,.18),
+        rgba(105,168,255,.08)
+      );
+      box-shadow: 0 25px 80px rgba(0,0,0,.25);
+    }
+
+    .photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+      display: block;
+    }
+
+    .section-label {
       color: var(--accent);
-      font-size: .76rem;
       text-transform: uppercase;
+      font-weight: 700;
       letter-spacing: 1.8px;
-      font-weight: 800;
-      margin-bottom: 5px;
+      font-size: .8rem;
+      margin-bottom: 10px;
     }
 
-    .section-title {
-      font-size: clamp(1.8rem, 4vw, 2.35rem);
-      line-height: 1.2;
-      margin: 0;
-    }
-
-    .section-description {
-      color: var(--muted);
-      max-width: 760px;
-    }
-
-    .panel, .card {
-      background: linear-gradient(145deg, rgba(23,35,59,.95), rgba(17,26,46,.95));
+    .panel {
+      background: var(--panel);
       border: 1px solid var(--border);
       border-radius: 16px;
-    }
-
-    .about-panel {
-      padding: 26px;
-      color: var(--muted);
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 20px;
-    }
-
-    .stat {
-      padding: 18px;
-      background: rgba(255,255,255,.025);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-    }
-
-    .stat strong {
-      display: block;
-      color: var(--text);
-      font-size: 1.4rem;
-    }
-
-    .stat span { color: var(--muted); font-size: .88rem; }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    .card { padding: 22px; }
-
-    .card h3 {
-      margin: 0 0 12px;
-      font-size: 1.08rem;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .tag {
-      border: 1px solid rgba(134,168,255,.22);
-      color: #d4def5;
-      background: rgba(134,168,255,.08);
-      padding: 5px 10px;
-      border-radius: 999px;
-      font-size: .82rem;
-    }
-
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
-
-    .project-card { padding: 24px; }
-
-    .project-label {
-      color: var(--accent);
-      font-size: .77rem;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      font-weight: 800;
-    }
-
-    .project-card h3 {
-      font-size: 1.3rem;
-      margin: 8px 0;
-    }
-
-    .project-card p, .project-card li { color: var(--muted); }
-
-    .project-card ul { padding-left: 20px; }
-
-    .timeline { display: grid; gap: 16px; }
-
-    .job {
-      display: grid;
-      grid-template-columns: 210px minmax(0, 1fr);
-      gap: 24px;
       padding: 24px;
     }
 
-    .job-date {
-      color: var(--accent);
-      font-size: .9rem;
-      font-weight: 800;
-    }
-
-    .job h3 { margin: 0; font-size: 1.15rem; }
-
-    .job-company {
-      color: #d5def1;
-      margin: 3px 0 10px;
-      font-weight: 600;
-    }
-
-    .job li { color: var(--muted); }
-
-    .job ul { margin: 8px 0 0; padding-left: 20px; }
-
-    .two-col {
+    .cards {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      border: 1px solid var(--border);
+      background: var(--panel-light);
+      border-radius: 999px;
+      padding: 8px 13px;
+      color: #dbe7f4;
+      font-size: .92rem;
+    }
+
+    .project-meta {
+      color: var(--accent);
+      font-size: .86rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .timeline {
+      display: grid;
       gap: 16px;
     }
 
-    .info-card h3 { margin-top: 0; }
-
-    .info-card p, .info-card li { color: var(--muted); }
-
-    .info-card ul { padding-left: 20px; }
-
-    .contact-panel {
-      padding: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
+    .job {
+      border-left: 3px solid var(--accent);
+      padding: 2px 0 2px 20px;
     }
 
-    .contact-panel p { color: var(--muted); }
+    .job-date {
+      font-size: .9rem;
+      color: var(--accent);
+      margin-bottom: 5px;
+    }
+
+    .job h3 { margin-bottom: 3px; }
+
+    .job-company {
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .contact-panel {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
 
     footer {
       border-top: 1px solid var(--border);
       padding: 24px 0;
+      text-align: center;
       color: var(--muted);
       font-size: .9rem;
     }
 
-    footer .container {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    @media (max-width: 850px) {
-      .hero-inner {
-        grid-template-columns: minmax(0, 1fr) 300px;
-        gap: 30px;
+    @media (max-width: 760px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 34px;
       }
 
-      .hero-image { width: 300px; }
+      .hero { padding-top: 52px; }
 
-      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .photo-wrap {
+        width: min(240px, 72%);
+        grid-row: 1;
+      }
 
-      .job { grid-template-columns: 1fr; gap: 8px; }
-    }
+      .cards { grid-template-columns: 1fr; }
 
-    @media (max-width: 620px) {
-      .container { width: calc(100% - 28px); }
-
-      .nav {
+      nav {
         padding: 14px 0;
         align-items: flex-start;
         flex-direction: column;
-        gap: 10px;
       }
 
-      nav { gap: 12px; }
+      .nav-links { gap: 12px 16px; }
 
-      .hero { padding: 40px 0 48px; }
-
-      .hero-inner {
-        display: flex;
-        flex-direction: column-reverse;
-        align-items: flex-start;
-        gap: 28px;
-      }
-
-      .hero-image {
-        width: min(100%, 320px);
-        align-self: center;
-      }
-
-      .skills-grid, .project-grid, .two-col, .stats {
-        grid-template-columns: 1fr;
-      }
-
-      .contact-panel {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .job { padding: 20px; }
+      section { padding: 58px 0; }
     }
   </style>
 </head>
 
 <body>
-<header>
-  <div class="container nav">
-    <a class="brand" href="#home">Muhammed<span>.</span></a>
-    <nav aria-label="Main navigation">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#education">Education</a>
-      <a href="#contact">Contact</a>
+  <header>
+    <nav class="container">
+      <a class="brand" href="#home">Muhammed<span>.</span></a>
+
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
     </nav>
-  </div>
-</header>
+  </header>
 
-<main>
-  <section class="hero" id="home">
-    <div class="container hero-inner">
-      <div class="hero-content">
-        <p class="eyebrow">DevOps · Infrastructure · Reliability</p>
-        <h1>Muhammed <span>Mustafa</span></h1>
-        <h2>DevOps Engineer | Systems &amp; Infrastructure</h2>
-        <p class="intro">
-          IT professional with 7+ years of experience across systems administration,
-          infrastructure operations, and DevOps. Focused on CI/CD automation,
-          Kubernetes operations, monitoring, and reliable production services.
-        </p>
-        <div class="actions">
-          <a class="btn btn-primary" href="#projects">Explore Projects</a>
-          <a class="btn btn-secondary" href="https://www.linkedin.com/in/muhammed-mustafa-727745134/" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
-          <a class="btn btn-secondary" href="https://github.com/MMustafa24" target="_blank" rel="noopener noreferrer">GitHub Profile</a>
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">DevOps Engineer · IT Infrastructure</div>
+
+          <h1>Hi, I'm <span>Muhammed Mustafa</span></h1>
+
+          <p class="hero-copy">
+            DevOps Engineer with a background in IT infrastructure and
+            system administration. I work with containerized environments,
+            CI/CD pipelines, monitoring, and reliable infrastructure operations.
+          </p>
+
+          <div class="actions">
+            <a class="btn" href="#projects">View My Work</a>
+            <a class="btn btn-secondary"
+               href="mailto:muhmmedmustafa7@gmail.com">Email Me</a>
+          </div>
+        </div>
+
+        <div class="photo-wrap">
+          <img
+            src="https://raw.githubusercontent.com/MMustafa24/muhammed-mustafa-portfolio/main/Warm%20Cinematic%20Corporate%20Headshot.png"
+            alt="Muhammed Mustafa professional portrait">
         </div>
       </div>
+    </section>
 
-      <div class="hero-image">
-        <img
-          src="https://raw.githubusercontent.com/MMustafa24/muhammed-mustafa-portfolio/main/Warm%20Cinematic%20Corporate%20Headshot.png"
-          alt="Professional portrait of Muhammed Mustafa">
-      </div>
-    </div>
-  </section>
+    <section id="about">
+      <div class="container">
+        <div class="section-label">About Me</div>
+        <h2>Infrastructure experience, automation mindset.</h2>
 
-  <section id="about">
-    <div class="container">
-      <div class="section-heading">
-        <p>Profile</p>
-        <h2 class="section-title">About Me</h2>
-      </div>
+        <div class="panel">
+          <p>
+            I have grown from IT support and system administration into
+            DevOps engineering, building on hands-on experience with Linux
+            and Windows environments, virtualization, networking, and
+            production infrastructure.
+          </p>
 
-      <div class="panel about-panel">
-        <p>
-          I started my career in IT support and systems administration, building
-          a practical foundation in troubleshooting, Windows and Linux environments,
-          infrastructure, and service operations. I moved into DevOps engineering
-          in 2024, applying that background to delivery automation, container
-          platforms, monitoring, and production support. I enjoy improving
-          deployment workflows and helping teams operate services consistently.
-        </p>
-
-        <div class="stats">
-          <div class="stat"><strong>7+ Years</strong><span>IT and infrastructure experience</span></div>
-          <div class="stat"><strong>3</strong><span>Kubernetes clusters managed</span></div>
-          <div class="stat"><strong>5</strong><span>Production projects supported</span></div>
+          <p>
+            My focus is on improving deployment workflows, supporting
+            Kubernetes-based environments, and helping teams operate
+            services reliably through automation and monitoring.
+          </p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="skills">
-    <div class="container">
-      <div class="section-heading">
-        <p>Technical toolkit</p>
-        <h2 class="section-title">Skills &amp; Technologies</h2>
-        <p class="section-description">Tools and areas I have worked with in DevOps, systems administration, and service operations.</p>
+    <section id="skills">
+      <div class="container">
+        <div class="section-label">Technical Skills</div>
+        <h2>Tools & Technologies</h2>
+
+        <div class="panel">
+          <div class="skills">
+            <span class="skill">Linux</span>
+            <span class="skill">Windows Server</span>
+            <span class="skill">Kubernetes</span>
+            <span class="skill">Docker / Containers</span>
+            <span class="skill">CI/CD</span>
+            <span class="skill">GitLab CI/CD</span>
+            <span class="skill">Argo CD</span>
+            <span class="skill">HashiCorp Vault</span>
+            <span class="skill">Grafana</span>
+            <span class="skill">Uptime Kuma</span>
+            <span class="skill">VMware</span>
+            <span class="skill">Hyper-V</span>
+            <span class="skill">Active Directory</span>
+            <span class="skill">DNS / DHCP</span>
+            <span class="skill">Monitoring</span>
+            <span class="skill">Backup & Restore</span>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="skills-grid">
-        <article class="card">
-          <h3>DevOps &amp; CI/CD</h3>
-          <div class="tags">
-            <span class="tag">GitLab CI/CD</span><span class="tag">Argo CD</span>
-            <span class="tag">Pipeline Automation</span><span class="tag">Deployments</span>
-          </div>
-        </article>
+    <section id="projects">
+      <div class="container">
+        <div class="section-label">Selected Work</div>
+        <h2>Projects</h2>
 
-        <article class="card">
-          <h3>Containers &amp; Orchestration</h3>
-          <div class="tags">
-            <span class="tag">Docker</span><span class="tag">Kubernetes</span>
-            <span class="tag">Cluster Operations</span>
-          </div>
-        </article>
+        <div class="cards">
+          <article class="panel">
+            <div class="project-meta">DevOps · Infrastructure Operations</div>
+            <h3>Nusuk Readers Project</h3>
 
-        <article class="card">
-          <h3>Monitoring &amp; Reliability</h3>
-          <div class="tags">
-            <span class="tag">Grafana</span><span class="tag">Uptime Kuma</span>
-            <span class="tag">Log Analysis</span><span class="tag">Troubleshooting</span>
-          </div>
-        </article>
+            <p>
+              Contributed to DevOps and infrastructure activities supporting
+              the Nusuk Readers project during the Hajj season, helping
+              maintain service readiness and operational reliability.
+            </p>
 
-        <article class="card">
-          <h3>Security &amp; Secrets</h3>
-          <div class="tags">
-            <span class="tag">HashiCorp Vault</span>
-            <span class="tag">Access Management</span>
-            <span class="tag">Operational Security</span>
-          </div>
-        </article>
+            <p>
+              Work performed as part of the company team; details are kept
+              high-level to respect project confidentiality.
+            </p>
+          </article>
 
-        <article class="card">
-          <h3>Systems &amp; Infrastructure</h3>
-          <div class="tags">
-            <span class="tag">Linux</span><span class="tag">Windows Server</span>
-            <span class="tag">Networking</span><span class="tag">Virtualization</span>
-            <span class="tag">System Administration</span>
-          </div>
-        </article>
+          <article class="panel">
+            <div class="project-meta">Ecosystem · Platform Support</div>
+            <h3>Tepra Ecosystem</h3>
 
-        <article class="card">
-          <h3>Operations</h3>
-          <div class="tags">
-            <span class="tag">Production Support</span>
-            <span class="tag">Incident Troubleshooting</span>
-            <span class="tag">Service Availability</span>
-            <span class="tag">Documentation</span>
-          </div>
-        </article>
+            <p>
+              Contributed to project-related infrastructure and operational
+              tasks as part of the delivery team, supporting the technical
+              environment and service operations.
+            </p>
+
+            <p>
+              Project details can be expanded with specific tools and
+              measurable outcomes where disclosure is permitted.
+            </p>
+          </article>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="projects">
-    <div class="container">
-      <div class="section-heading">
-        <p>Selected work</p>
-        <h2 class="section-title">Projects</h2>
-        <p class="section-description">High-level summaries of professional projects, without exposing confidential company code or information.</p>
-      </div>
+    <section id="experience">
+      <div class="container">
+        <div class="section-label">Career Journey</div>
+        <h2>Professional Experience</h2>
 
-      <div class="project-grid">
-        <article class="card project-card">
-          <span class="project-label">Production · Hajj 1447</span>
-          <h3>Nusuk Readers</h3>
-          <p>Contributed to operational support for a production service during the Hajj season, focusing on availability and troubleshooting.</p>
-          <ul>
-            <li>Supported monitoring and service availability.</li>
-            <li>Reviewed logs and helped troubleshoot service issues.</li>
-            <li>Worked with the team to support stable production operations.</li>
-          </ul>
-          <p><strong>Recognition:</strong> Certificate of Appreciation for contribution to the Nusuk Readers Project during Hajj 1447.</p>
-        </article>
-
-        <article class="card project-card">
-          <span class="project-label">Production ecosystem</span>
-          <h3>Tepra Ecosystem</h3>
-          <p>Participated in implementation and ongoing administration and operations as part of wider DevOps and infrastructure responsibilities.</p>
-          <ul>
-            <li>Supported environment and deployment operations.</li>
-            <li>Assisted with troubleshooting and maintenance.</li>
-            <li>Collaborated with the team while respecting internal confidentiality.</li>
-          </ul>
-        </article>
-
-        <article class="card project-card">
-          <span class="project-label">Platform operations</span>
-          <h3>Kubernetes &amp; CI/CD Workflows</h3>
-          <p>Worked with Kubernetes environments and CI/CD tooling as part of platform operations.</p>
-          <ul>
-            <li>Supported operations across three Kubernetes clusters.</li>
-            <li>Worked with GitLab CI/CD and Argo CD workflows.</li>
-            <li>Used monitoring and troubleshooting tools to support services.</li>
-          </ul>
-        </article>
-
-        <article class="card project-card">
-          <span class="project-label">Observability &amp; secrets</span>
-          <h3>Monitoring &amp; Operational Tooling</h3>
-          <p>Worked with tools used to monitor services and manage application secrets.</p>
-          <ul>
-            <li>Grafana and Uptime Kuma for monitoring and service visibility.</li>
-            <li>HashiCorp Vault for secrets-management workflows.</li>
-            <li>Log review and incident troubleshooting.</li>
-          </ul>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="experience">
-    <div class="container">
-      <div class="section-heading">
-        <p>Career journey</p>
-        <h2 class="section-title">Professional Experience</h2>
-      </div>
-
-      <div class="timeline">
-        <article class="panel job">
-          <div class="job-date">Sep 2024 – Present</div>
-          <div>
+        <div class="timeline">
+          <article class="job">
+            <div class="job-date">Sep 2024 – Present</div>
             <h3>DevOps Engineer</h3>
             <div class="job-company">AFAQY</div>
-            <ul>
-              <li>Support deployment automation and CI/CD workflows using GitLab CI/CD and Argo CD.</li>
-              <li>Manage and support Kubernetes environments, including operations across three clusters.</li>
-              <li>Work with HashiCorp Vault, Grafana, and Uptime Kuma for secrets management and observability.</li>
-              <li>Assist with production troubleshooting, log analysis, and service availability.</li>
-              <li>Contribute to projects including Nusuk Readers and Tepra Ecosystem.</li>
-            </ul>
-          </div>
-        </article>
+            <p>
+              Support deployment automation, Kubernetes environments,
+              CI/CD workflows, monitoring, and day-to-day infrastructure operations.
+            </p>
+          </article>
 
-        <article class="panel job">
-          <div class="job-date">Sep 2021 – Aug 2024</div>
-          <div>
+          <article class="job">
+            <div class="job-date">Sep 2021 – Aug 2024</div>
             <h3>System Administrator</h3>
             <div class="job-company">AFAQY</div>
-            <ul>
-              <li>Administered and supported IT systems and infrastructure services.</li>
-              <li>Handled system troubleshooting, routine maintenance, and service availability.</li>
-              <li>Supported users and internal teams with technical and infrastructure issues.</li>
-              <li>Built the operational foundation for the transition into DevOps.</li>
-            </ul>
-          </div>
-        </article>
+            <p>
+              Administered systems and infrastructure services, supporting
+              availability, maintenance, troubleshooting, and operational continuity.
+            </p>
+          </article>
 
-        <article class="panel job">
-          <div class="job-date">May 2021 – Jul 2021</div>
-          <div>
-            <h3>Service Desk Engineer</h3>
-            <div class="job-company">Raya — Audi Bank Project</div>
-            <ul>
-              <li>Provided technical support and service-desk assistance in a banking project environment.</li>
-              <li>Handled user issues, initial troubleshooting, and escalations.</li>
-              <li>Supported service continuity and followed operational procedures.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="panel job">
-          <div class="job-date">Oct 2019 – Jul 2021</div>
-          <div>
+          <article class="job">
+            <div class="job-date">Oct 2019 – Jul 2021</div>
             <h3>System Engineer</h3>
             <div class="job-company">Bioxell</div>
-            <ul>
-              <li>Worked on systems and infrastructure administration and technical troubleshooting.</li>
-              <li>Supported system maintenance and daily IT operations.</li>
-              <li>Assisted with resolving technical issues in the supported environment.</li>
-            </ul>
-          </div>
-        </article>
+            <p>
+              Worked on IT systems and infrastructure support, including
+              troubleshooting and administration tasks.
+            </p>
+          </article>
 
-        <article class="panel job">
-          <div class="job-date">Oct 2018 – Oct 2019</div>
-          <div>
+          <article class="job">
+            <div class="job-date">Oct 2018 – Oct 2019</div>
             <h3>IT System Administrator</h3>
             <div class="job-company">New Horizons</div>
-            <ul>
-              <li>Supported system administration and maintenance activities.</li>
-              <li>Troubleshot user, operating-system, and infrastructure issues.</li>
-              <li>Helped maintain a stable and functional IT environment.</li>
-            </ul>
-          </div>
-        </article>
+            <p>
+              Supported system administration, user access, endpoint
+              operations, and general IT infrastructure.
+            </p>
+          </article>
 
-        <article class="panel job">
-          <div class="job-date">Sep 2016 – Oct 2018</div>
-          <div>
+          <article class="job">
+            <div class="job-date">Sep 2016 – Oct 2018</div>
             <h3>IT Support Engineer</h3>
             <div class="job-company">New Horizons</div>
-            <ul>
-              <li>Provided first-line IT support for end-user devices and applications.</li>
-              <li>Assisted users with hardware, software, connectivity, and access issues.</li>
-              <li>Escalated complex incidents and supported day-to-day IT operations.</li>
-            </ul>
+            <p>
+              Provided technical support, troubleshooting, and assistance
+              with end-user devices and IT services.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <div class="section-label">Education</div>
+        <h2>Academic Background</h2>
+
+        <div class="panel">
+          <h3>Cairo University</h3>
+          <p>Faculty of Law · 2016</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-label">Get In Touch</div>
+
+        <div class="panel contact-panel">
+          <div>
+            <h2>Let's connect</h2>
+            <p>
+              For DevOps and IT infrastructure opportunities,
+              feel free to connect with me.
+            </p>
           </div>
-        </article>
-      </div>
-    </div>
-  </section>
 
-  <section id="education">
-    <div class="container">
-      <div class="section-heading">
-        <p>Learning &amp; background</p>
-        <h2 class="section-title">Education &amp; Training</h2>
-      </div>
+          <div class="contact-links">
+            <a class="btn"
+               href="mailto:muhmmedmustafa7@gmail.com">Email Me</a>
 
-      <div class="two-col">
-        <article class="card info-card">
-          <h3>Education</h3>
-          <p><strong>Cairo University</strong><br>Faculty of Law · 2016</p>
-          <h3>Languages</h3>
-          <p>Arabic — Native<br>English — Good working proficiency</p>
-        </article>
+            <a class="btn btn-secondary"
+               href="https://www.linkedin.com/in/muhammed-mustafa-727745134/"
+               target="_blank" rel="noopener noreferrer">LinkedIn</a>
 
-        <article class="card info-card">
-          <h3>Technical Training &amp; Courses</h3>
-          <ul>
-            <li>Advanced Cloud DevOps practical training — three-month program.</li>
-            <li>DevOps fundamentals and hands-on practice.</li>
-            <li>Linux administration.</li>
-            <li>Docker and Kubernetes fundamentals.</li>
-            <li>CCNA Routing and Switching study.</li>
-            <li>MCSA and Microsoft Exchange Server 2013/2016 study.</li>
-            <li>Red Hat Administration I study.</li>
-            <li>Virtualization: VMware and Hyper-V.</li>
-            <li>Firewall technologies: TMG, Sophos, and Kerio.</li>
-          </ul>
-          <p><em>Course topics are listed separately from professional certifications.</em></p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="container">
-      <div class="section-heading">
-        <p>Get in touch</p>
-        <h2 class="section-title">Contact &amp; Profiles</h2>
-      </div>
-
-      <div class="panel contact-panel">
-        <div>
-          <h3>Let’s connect</h3>
-          <p>For DevOps, infrastructure, and cloud-related opportunities, feel free to connect with me.</p>
-        </div>
-        <div class="actions">
-  <a class="btn btn-primary"
-     href="https://www.linkedin.com/in/muhammed-mustafa-727745134/"
-     target="_blank"
-     rel="noopener noreferrer">LinkedIn</a>
-
-  <a class="btn btn-secondary"
-     href="https://github.com/MMustafa24"
-     target="_blank"
-     rel="noopener noreferrer">GitHub</a>
-
-  <a class="btn btn-secondary"
-     href="mailto:muhmmedmustafa7@gmail.com">Email Me</a>
+            <a class="btn btn-secondary"
+               href="https://github.com/MMustafa24"
+               target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
         </div>
       </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Muhammed Mustafa. All rights reserved.
     </div>
-  </section>
-</main>
-
-<footer>
-  <div class="container">
-    <span>© <span id="year"></span> Muhammed Mustafa</span>
-    <span>DevOps · Systems Administration · Infrastructure</span>
-  </div>
-</footer>
-
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+  </footer>
 </body>
 </html>
