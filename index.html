@@ -420,12 +420,19 @@
         #0a1a30;
     }
 
-    .contact-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 28px; align-items: stretch; }
+    .contact-grid { max-width: 760px; }
 
     .contact-card h3 { font-size: 22px; margin-bottom: 12px; }
     .contact-card > p { color: var(--muted); margin-bottom: 22px; }
 
-    .contact-links { display: grid; gap: 14px; }
+    .contact-links {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px 24px;
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
 
     .contact-link { color: var(--muted); overflow-wrap: anywhere; }
     .contact-link:hover span { color: var(--accent); }
@@ -488,6 +495,7 @@
       .eyebrow { margin-bottom: 12px; font-size: 12px; }
 
       .metrics-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .contact-links { grid-template-columns: 1fr; }
 
       .about-grid, .cards, .education-grid, .contact-grid { grid-template-columns: 1fr; }
       .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -906,20 +914,6 @@
               opportunities in DevOps and IT infrastructure.
             </p>
 
-            <div class="contact-actions">
-              <a
-                class="btn btn-primary"
-                href="https://www.linkedin.com/in/muhammed-mustafa-727745134/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >Connect on LinkedIn</a>
-
-              <a class="btn btn-secondary" href="mailto:muhmmedmustafa7@gmail.com">Email Me</a>
-            </div>
-          </div>
-
-          <div class="contact-card card">
-            <h3>Contact information</h3>
 
             <div class="contact-links">
 
