@@ -1,536 +1,998 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Muhammed Mustafa — DevOps Engineer and IT Infrastructure professional.">
+
   <title>Muhammed Mustafa | DevOps Engineer</title>
+  <meta name="description" content="Muhammed Mustafa - DevOps Engineer managing production Kubernetes clusters with GitLab CI/CD, ArgoCD, Vault, KEDA and Kafka. Over 10 years in IT infrastructure.">
+  <meta name="theme-color" content="#071426">
+
+  <!-- Open Graph (replace og:image with a real 1200x630 preview image) -->
+  <meta property="og:title" content="Muhammed Mustafa | DevOps Engineer">
+  <meta property="og:description" content="DevOps Engineer: Kubernetes, CI/CD, GitOps, Linux and IT infrastructure.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://raw.githubusercontent.com/MMustafa24/muhammed-mustafa-portfolio/main/Warm%20Cinematic%20Corporate%20Headshot.png">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23071426'/%3E%3Ctext x='50%25' y='56%25' font-family='Arial' font-weight='800' font-size='30' fill='%2352a8ff' text-anchor='middle' dominant-baseline='middle'%3EMM%3C/text%3E%3C/svg%3E">
 
   <style>
     :root {
-      --bg: #07111f;
-      --panel: #0d1b2d;
-      --panel-light: #12243a;
-      --text: #eaf2fb;
-      --muted: #a8b8ca;
-      --accent: #35d0ba;
-      --border: rgba(255,255,255,.10);
+      --bg: #071426;
+      --surface: #0e2038;
+      --surface-light: #142b49;
+      --text: #f1f6ff;
+      --muted: #a8bad2;
+      --accent: #52a8ff;
+      --accent-blue: #75c8ff;
+      --border: rgba(130, 180, 240, 0.18);
+      --shadow: 0 16px 45px rgba(0, 0, 0, 0.22);
     }
 
-    * { box-sizing: border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
 
     body {
-      margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.65;
+      line-height: 1.7;
     }
 
     a { color: inherit; text-decoration: none; }
 
-    .container {
-      width: min(1100px, 92%);
-      margin: 0 auto;
+    .container { width: min(1120px, 90%); margin: 0 auto; }
+
+    /* Accessibility */
+    .skip-link {
+      position: absolute;
+      left: 16px;
+      top: -60px;
+      z-index: 100;
+      background: var(--accent);
+      color: #071426;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 700;
+      transition: top 0.2s ease;
+    }
+    .skip-link:focus { top: 12px; }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--accent-blue);
+      outline-offset: 3px;
+      border-radius: 6px;
     }
 
+    /* Header */
     header {
       position: sticky;
       top: 0;
       z-index: 10;
-      background: rgba(7,17,31,.92);
+      background: rgba(7, 20, 38, 0.94);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
 
     nav {
-      min-height: 70px;
+      min-height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      gap: 24px;
     }
 
-    .brand {
+    .logo {
+      font-size: 21px;
       font-weight: 800;
-      letter-spacing: .3px;
+      color: var(--accent);
+      white-space: nowrap;
     }
-
-    .brand span { color: var(--accent); }
 
     .nav-links {
       display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      color: var(--muted);
-      font-size: .94rem;
+      align-items: center;
+      gap: 22px;
     }
 
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
     .nav-links a:hover { color: var(--accent); }
 
-    section { padding: 76px 0; }
+    .nav-toggle {
+      display: none;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 20px;
+      line-height: 1;
+    }
 
-    .hero { padding: 76px 0 88px; }
+    /* Hero */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 55px 0;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(circle at 85% 25%, rgba(52, 137, 235, 0.22), transparent 38%),
+        linear-gradient(135deg, #071426, #102b4c);
+    }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.35fr .65fr;
+      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-areas:
+        "head photo"
+        "body photo";
+      align-content: center;
       align-items: center;
-      gap: 50px;
+      column-gap: 45px;
+      row-gap: 0;
+      width: 100%;
     }
+
+    .hero-head { grid-area: head; align-self: end; }
+    .hero-body { grid-area: body; align-self: start; }
+    .photo-column { grid-area: photo; }
 
     .eyebrow {
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: .82rem;
+      display: inline-block;
+      color: var(--accent-blue);
+      background: rgba(82, 168, 255, 0.10);
+      border: 1px solid rgba(82, 168, 255, 0.22);
+      border-radius: 30px;
+      padding: 7px 15px;
+      font-size: 13px;
       font-weight: 700;
+      margin-bottom: 22px;
     }
 
-    h1 {
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      line-height: 1.08;
-      margin: 14px 0 18px;
-    }
-
-    h1 span { color: var(--accent); }
-
-    h2 {
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
-      line-height: 1.2;
-      margin: 0 0 22px;
-    }
-
-    h3 {
-      margin: 0 0 10px;
-      font-size: 1.18rem;
-    }
-
-    p {
-      color: var(--muted);
-      margin: 0 0 16px;
-    }
-
-    .hero-copy {
+    .hero h1 {
+      font-size: clamp(38px, 5vw, 60px);
+      line-height: 1.12;
+      letter-spacing: -1.8px;
+      margin-bottom: 22px;
       max-width: 680px;
-      font-size: 1.08rem;
     }
 
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 28px;
+    .hero-description {
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 17px;
+      margin-bottom: 30px;
     }
+
+    .hero-buttons { display: flex; flex-wrap: wrap; gap: 14px; }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 11px 18px;
-      border-radius: 9px;
+      padding: 12px 23px;
+      border-radius: 10px;
+      font-size: 14px;
       font-weight: 700;
-      border: 1px solid var(--accent);
-      background: var(--accent);
-      color: #06141e;
-      transition: transform .2s ease, opacity .2s ease;
-      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
+    .btn:hover { transform: translateY(-2px); }
 
-    .btn:hover {
-      transform: translateY(-2px);
-      opacity: .92;
+    .btn-primary {
+      background: var(--accent);
+      color: #071426;
+      box-shadow: 0 8px 22px rgba(52, 137, 235, 0.2);
     }
 
     .btn-secondary {
-      background: transparent;
+      background: #10243d;
+      border: 1px solid var(--border);
       color: var(--text);
-      border-color: var(--border);
     }
 
+    .photo-column { display: flex; justify-content: flex-end; align-items: center; }
+
     .photo-wrap {
-      width: min(310px, 100%);
-      aspect-ratio: 1;
-      margin: 0 auto;
+      position: relative;
+      width: min(350px, 100%);
+      aspect-ratio: 1 / 1;
+      padding: 7px;
+      overflow: hidden;
       border-radius: 26px;
-      padding: 8px;
-      border: 1px solid rgba(53,208,186,.5);
-      background: linear-gradient(
-        145deg,
-        rgba(53,208,186,.18),
-        rgba(105,168,255,.08)
-      );
-      box-shadow: 0 25px 80px rgba(0,0,0,.25);
+      border: 1px solid rgba(82, 168, 255, 0.5);
+      background: linear-gradient(145deg, #174b7d, #10213b);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
     }
 
     .photo-wrap img {
-      width: 100%;
-      height: 80%;
-      object-fit: cover;
-      border-radius: 20px;
+      position: relative;
+      z-index: 1;
       display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 19px;
     }
 
-    .section-label {
-      color: var(--accent);
-      text-transform: uppercase;
-      font-weight: 700;
-      letter-spacing: 1.8px;
-      font-size: .8rem;
-      margin-bottom: 10px;
-    }
-
-    .panel {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 24px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .skills {
+    /* Fallback shown if the photo fails to load */
+    .photo-fallback {
+      position: absolute;
+      inset: 7px;
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .skill {
-      border: 1px solid var(--border);
-      background: var(--panel-light);
-      border-radius: 999px;
-      padding: 8px 13px;
-      color: #dbe7f4;
-      font-size: .92rem;
-    }
-
-    .project-meta {
+      align-items: center;
+      justify-content: center;
+      border-radius: 19px;
+      font-size: 72px;
+      font-weight: 800;
       color: var(--accent);
-      font-size: .86rem;
-      font-weight: 700;
-      margin-bottom: 8px;
+      background: #10213b;
     }
 
-    .timeline {
+    /* Metrics */
+    .metrics { padding: 0; margin-top: -42px; position: relative; z-index: 2; }
+
+    .metrics-grid {
       display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 16px;
     }
 
-    .job {
-      border-left: 3px solid var(--accent);
-      padding: 2px 0 2px 20px;
+    .metric {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      text-align: center;
+      box-shadow: var(--shadow);
     }
 
-    .job-date {
-      font-size: .9rem;
+    .metric strong {
+      display: block;
+      font-size: 34px;
+      line-height: 1.1;
       color: var(--accent);
-      margin-bottom: 5px;
+      margin-bottom: 6px;
     }
 
-    .job h3 { margin-bottom: 3px; }
+    .metric span { color: var(--muted); font-size: 13px; font-weight: 600; }
 
-    .job-company {
-      color: var(--text);
+    /* Sections */
+    section { padding: 82px 0; }
+
+    .section-heading { margin-bottom: 38px; }
+
+    .section-label {
+      color: var(--accent);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 800;
       margin-bottom: 8px;
     }
 
-    .contact-panel {
+    .section-heading h2 {
+      font-size: clamp(28px, 4vw, 38px);
+      line-height: 1.25;
+      letter-spacing: -0.7px;
+    }
+
+    .section-heading p { color: var(--muted); max-width: 680px; margin-top: 12px; }
+
+    /* Shared card style */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: stretch;
+    }
+
+    .about-card p { color: var(--muted); margin-bottom: 14px; }
+    .about-card p:last-child { margin-bottom: 0; }
+
+    .info-card h3 { margin-bottom: 18px; font-size: 20px; }
+
+    .info-list { list-style: none; display: grid; gap: 15px; }
+
+    .info-list li { color: var(--muted); padding-left: 20px; position: relative; }
+
+    .info-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 11px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent-blue);
+    }
+
+    /* Skills */
+    .alt-bg { background: #0a1a30; }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 19px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .skill-card:hover { transform: translateY(-3px); border-color: rgba(82, 168, 255, 0.4); }
+
+    .skill-card h3 { font-size: 15px; margin-bottom: 8px; color: var(--accent); }
+    .skill-card p { font-size: 13px; color: var(--muted); }
+
+    /* Projects */
+    .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+
+    .project-card {
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
+      min-height: 270px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .project-card:hover { transform: translateY(-4px); border-color: rgba(82, 168, 255, 0.4); }
+
+    .project-number {
+      width: 43px;
+      height: 43px;
+      display: flex;
       align-items: center;
-      gap: 24px;
-      flex-wrap: wrap;
+      justify-content: center;
+      border-radius: 12px;
+      background: var(--surface-light);
+      color: var(--accent);
+      font-weight: 800;
+      margin-bottom: 20px;
     }
 
-    .contact-links {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
+    .project-card h3 { font-size: 21px; margin-bottom: 12px; }
+    .project-card p { color: var(--muted); margin-bottom: 20px; }
+
+    .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
+
+    .tag {
+      display: inline-block;
+      background: #142b49;
+      color: #a8d5ff;
+      border: 1px solid var(--border);
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
     }
 
+    /* Experience */
+    .experience-list { display: grid; gap: 20px; }
+
+    .experience-card { padding-left: 32px; border-left: 3px solid var(--accent-blue); }
+
+    .experience-card h3 { font-size: 19px; margin-bottom: 4px; }
+    .experience-company { color: var(--accent); font-weight: 700; margin-bottom: 5px; }
+    .experience-date { display: inline-block; color: var(--muted); font-size: 13px; margin-bottom: 12px; }
+    .experience-card p { color: var(--muted); }
+
+    .experience-card ul { margin-top: 10px; padding-left: 18px; color: var(--muted); }
+    .experience-card li { margin-bottom: 6px; }
+
+    /* Education */
+    .education-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+
+    .education-card h3 { font-size: 18px; margin-bottom: 8px; }
+    .education-card p { color: var(--muted); }
+    .education-meta { color: var(--accent); font-weight: 700; font-size: 14px; margin-bottom: 8px; }
+
+    /* Contact */
+    .contact-section {
+      background:
+        radial-gradient(circle at 90% 10%, rgba(52, 137, 235, 0.12), transparent 35%),
+        #0a1a30;
+    }
+
+    .contact-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 28px; align-items: stretch; }
+
+    .contact-card h3 { font-size: 22px; margin-bottom: 12px; }
+    .contact-card > p { color: var(--muted); margin-bottom: 22px; }
+
+    .contact-links { display: grid; gap: 14px; }
+
+    .contact-link { color: var(--muted); overflow-wrap: anywhere; }
+    .contact-link:hover span { color: var(--accent); }
+
+    .contact-link strong { display: block; color: var(--text); font-size: 13px; margin-bottom: 2px; }
+    .contact-link span { font-size: 14px; transition: color 0.2s ease; }
+
+    .contact-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 25px; }
+
+    /* Footer */
     footer {
+      padding: 25px 0;
+      background: #061020;
       border-top: 1px solid var(--border);
-      padding: 24px 0;
-      text-align: center;
       color: var(--muted);
-      font-size: .9rem;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-grid { column-gap: 30px; grid-template-columns: 1.1fr 0.9fr; }
+      .skills-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .photo-wrap { width: min(320px, 100%); }
+      .education-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
     @media (max-width: 760px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 34px;
-      }
+      .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
 
-      .hero { padding-top: 52px; }
+      nav { flex-wrap: wrap; padding: 14px 0; }
 
-      .photo-wrap {
-        width: min(240px, 72%);
-        grid-row: 1;
-      }
-
-      .cards { grid-template-columns: 1fr; }
-
-      nav {
-        padding: 14px 0;
-        align-items: flex-start;
+      .nav-links {
+        display: none;
+        width: 100%;
         flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        padding-top: 8px;
       }
+      .nav-links.open { display: flex; }
+      .nav-links a { width: 100%; padding: 10px 0; font-size: 15px; }
 
-      .nav-links { gap: 12px 16px; }
+      .hero { padding: 55px 0 75px; }
+      .hero-grid {
+        grid-template-columns: 120px 1fr;
+        grid-template-areas:
+          "photo head"
+          "body body";
+        column-gap: 18px;
+        row-gap: 24px;
+        align-items: center;
+      }
+      .hero-head { align-self: center; }
+      .photo-column { justify-content: flex-start; }
+      .photo-wrap { width: 120px; padding: 5px; border-radius: 20px; }
+      .photo-wrap img { border-radius: 15px; }
+      .photo-fallback { inset: 5px; border-radius: 15px; font-size: 36px; }
+      .hero h1 { font-size: 34px; margin-bottom: 0; }
+      .eyebrow { margin-bottom: 12px; font-size: 12px; }
+
+      .metrics-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+      .about-grid, .cards, .education-grid, .contact-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
       section { padding: 58px 0; }
+      .metrics { padding: 0; }
+    }
+
+    @media (max-width: 420px) {
+      .hero h1 { letter-spacing: -1px; font-size: 28px; }
+      .hero-grid { grid-template-columns: 96px 1fr; }
+      .photo-wrap { width: 96px; }
+      .hero-buttons { flex-direction: column; align-items: stretch; }
+      .btn { width: 100%; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .card { padding: 22px; }
+      .experience-card { padding-left: 22px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+      .btn:hover, .skill-card:hover, .project-card:hover { transform: none; }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <nav class="container">
-      <a class="brand" href="#home">Muhammed<span>.</span></a>
+  <a href="#main" class="skip-link">Skip to content</a>
 
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </nav>
+  <header>
+    <div class="container">
+      <nav aria-label="Main navigation">
+        <a href="#home" class="logo">Muhammed Mustafa</a>
+
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle menu">&#9776;</button>
+
+        <div class="nav-links" id="navLinks">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#education">Education</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow">DevOps Engineer · Systems Administrator</div>
+  <main id="main">
 
-          <h1>Hi, I'm <span>Muhammed Mustafa</span></h1>
+    <!-- Hero -->
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero-grid">
 
-          <p class="hero-copy">
-            DevOps Engineer with a background in IT infrastructure and
-            system administration. I work with containerized environments,
-            CI/CD pipelines, monitoring, and reliable infrastructure operations.
-          </p>
+          <div class="hero-head">
+            <div class="eyebrow">DevOps Engineer · Kubernetes · CI/CD</div>
 
-          <div class="actions">
-            <a class="btn" href="#projects">View My Work</a>
-            <a class="btn btn-secondary"
-               href="mailto:muhmmedmustafa7@gmail.com">Email Me</a>
+            <h1 id="hero-title">Muhammed Mustafa</h1>
           </div>
-        </div>
 
-        <div class="photo-wrap">
-          <img
-            src="https://raw.githubusercontent.com/MMustafa24/muhammed-mustafa-portfolio/main/Warm%20Cinematic%20Corporate%20Headshot.png"
-            alt="Muhammed Mustafa professional portrait">
-        </div>
-      </div>
-    </section>
+          <div class="hero-body">
+            <p class="hero-description">
+              DevOps Engineer with a strong IT infrastructure background.
+              I manage production Kubernetes clusters, build GitLab CI/CD and
+              ArgoCD GitOps workflows, and keep critical systems reliable
+              through monitoring and hands-on operations.
+            </p>
 
-    <section id="about">
-      <div class="container">
-        <div class="section-label">About Me</div>
-        <h2>Infrastructure experience, automation mindset.</h2>
-
-        <div class="panel">
-          <p>
-            I have grown from IT support and system administration into
-            DevOps engineering, building on hands-on experience with Linux
-            and Windows environments, virtualization, networking, and
-            production infrastructure.
-          </p>
-
-          <p>
-            My focus is on improving deployment workflows, supporting
-            Kubernetes-based environments, and helping teams operate
-            services reliably through automation and monitoring.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="skills">
-      <div class="container">
-        <div class="section-label">Technical Skills</div>
-        <h2>Tools & Technologies</h2>
-
-        <div class="panel">
-          <div class="skills">
-            <span class="skill">Linux</span>
-            <span class="skill">Windows Server</span>
-            <span class="skill">Kubernetes</span>
-            <span class="skill">Docker / Containers</span>
-            <span class="skill">CI/CD</span>
-            <span class="skill">GitLab CI/CD</span>
-            <span class="skill">Argo CD</span>
-            <span class="skill">HashiCorp Vault</span>
-            <span class="skill">Grafana</span>
-            <span class="skill">Uptime Kuma</span>
-            <span class="skill">VMware</span>
-            <span class="skill">Hyper-V</span>
-            <span class="skill">Active Directory</span>
-            <span class="skill">DNS / DHCP</span>
-            <span class="skill">Monitoring</span>
-            <span class="skill">Backup & Restore</span>
+            <div class="hero-buttons">
+              <a href="#projects" class="btn btn-primary">Explore My Projects</a>
+              <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+            </div>
           </div>
+
+          <div class="photo-column">
+            <div class="photo-wrap">
+              <div class="photo-fallback" aria-hidden="true">MM</div>
+              <img
+                src="https://raw.githubusercontent.com/MMustafa24/muhammed-mustafa-portfolio/main/Warm%20Cinematic%20Corporate%20Headshot.png"
+                alt="Muhammed Mustafa - DevOps Engineer"
+                width="350"
+                height="350"
+                decoding="async"
+                onerror="this.remove()"
+              >
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
 
-    <section id="projects">
+    <!-- Metrics -->
+    <section class="metrics" aria-label="Highlights">
       <div class="container">
-        <div class="section-label">Selected Work</div>
-        <h2>Projects</h2>
+        <div class="metrics-grid">
+          <div class="metric card"><strong>3</strong><span>Kubernetes Clusters Managed</span></div>
+          <div class="metric card"><strong>5</strong><span>Projects Delivered</span></div>
+          <div class="metric card"><strong>2+</strong><span>Years as DevOps Engineer</span></div>
+          <div class="metric card"><strong>10+</strong><span>Years in IT</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" aria-labelledby="about-title">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="section-label">About Me</div>
+          <h2 id="about-title">Infrastructure meets automation</h2>
+          <p>
+            I started in IT support, grew through system administration,
+            and moved into DevOps, so I understand both how systems run and
+            how to automate them.
+          </p>
+        </div>
+
+        <div class="about-grid">
+
+          <div class="about-card card">
+            <p>
+              I'm a DevOps Engineer with over a decade of experience across
+              IT support, system administration, and infrastructure operations.
+            </p>
+
+            <p>
+              Today I manage three Kubernetes clusters, deliver applications
+              through GitLab CI/CD and ArgoCD, secure secrets with HashiCorp
+              Vault, and watch system health with Grafana and Uptime Kuma.
+              I also run event-driven autoscaling with KEDA on Kafka-based
+              workloads.
+            </p>
+
+            <p>
+              I'm currently preparing for a DevOps-related certification to
+              keep deepening my skills in Kubernetes and automation.
+            </p>
+          </div>
+
+          <div class="info-card card">
+            <h3>Areas of Focus</h3>
+
+            <ul class="info-list">
+              <li>Kubernetes cluster operations and application delivery</li>
+              <li>CI/CD pipelines and GitOps with GitLab and ArgoCD</li>
+              <li>Event-driven autoscaling with KEDA and Kafka</li>
+              <li>Monitoring, troubleshooting, and system reliability</li>
+              <li>Secrets management and infrastructure security</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="alt-bg" id="skills" aria-labelledby="skills-title">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="section-label">Technical Skills</div>
+          <h2 id="skills-title">Tools and technologies</h2>
+          <p>The stack I use day to day across DevOps and infrastructure work.</p>
+        </div>
+
+        <div class="skills-grid">
+
+          <div class="skill-card">
+            <h3>Orchestration</h3>
+            <p>Kubernetes (multi-cluster)</p>
+          </div>
+
+          <div class="skill-card">
+            <h3>Containers</h3>
+            <p>Docker, Containerd</p>
+          </div>
+
+          <div class="skill-card">
+            <h3>CI/CD &amp; GitOps</h3>
+            <p>GitLab CI/CD, Argo CD</p>
+          </div>
+
+          <div class="skill-card">
+            <h3>Autoscaling</h3>
+            <p>KEDA (event-driven scaling)</p>
+          </div>
+
+          <div class="skill-card">
+            <h3>Messaging</h3>
+            <p>Apache Kafka</p>
+          </div>
+
+          <div class="skill-card">
+            <h3>Security</h3>
+            <p>HashiCorp Vault, secrets management</p>
+          </div>
+
+          <div class="skill-card">
+            <h3>Monitoring</h3>
+            <p>Grafana, Uptime Kuma, PRTG</p>
+          </div>
+
+          <div class="skill-card">
+            <h3>Operating Systems</h3>
+            <p>Linux, Ubuntu, Windows Server</p>
+          </div>
+
+          <div class="skill-card">
+            <h3>Virtualization</h3>
+            <p>VMware, Hyper-V</p>
+          </div>
+
+          <div class="skill-card">
+            <h3>Networking</h3>
+            <p>DNS, DHCP, TCP/IP</p>
+          </div>
+
+          <div class="skill-card">
+            <h3>Infrastructure Services</h3>
+            <p>Active Directory, system administration</p>
+          </div>
+
+          <div class="skill-card">
+            <h3>Backup &amp; Recovery</h3>
+            <p>Backup operations and recovery support</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" aria-labelledby="projects-title">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="section-label">Selected Work</div>
+          <h2 id="projects-title">Projects I've worked on</h2>
+          <p>
+            Selected projects from my professional experience.
+            Details are kept at a high level.
+          </p>
+        </div>
 
         <div class="cards">
-          <article class="panel">
-            <div class="project-meta">DevOps · Infrastructure Operations</div>
+
+          <article class="project-card card">
+            <div class="project-number">01</div>
+
             <h3>Nusuk Readers Project</h3>
 
             <p>
-              Contributed to DevOps and infrastructure activities supporting
-              the Nusuk Readers project during the Hajj season, helping
-              maintain service readiness and operational reliability.
+              Followed the project closely in real time during Hajj 1447,
+              monitoring system health around the clock. Managed the
+              Kubernetes cluster according to project requirements, working
+              side by side with the development team to scale, troubleshoot,
+              and keep the platform stable.
             </p>
 
-            <p>
-              Work performed as part of the company team; details are kept
-              high-level to respect project confidentiality.
-            </p>
+            <div class="tag-list">
+              <span class="tag">Kubernetes</span>
+              <span class="tag">Real-time Monitoring</span>
+              <span class="tag">Cluster Operations</span>
+              <span class="tag">DevOps</span>
+            </div>
           </article>
 
-          <article class="panel">
-            <div class="project-meta">Ecosystem · Platform Support</div>
+          <article class="project-card card">
+            <div class="project-number">02</div>
+
             <h3>Tepra Ecosystem</h3>
 
             <p>
-              Contributed to project-related infrastructure and operational
-              tasks as part of the delivery team, supporting the technical
-              environment and service operations.
+              Tepra is an ecosystem of several applications running under one
+              name. I work with the development team and with the services
+              behind each application, supporting deployment, operations,
+              and day-to-day stability across the whole ecosystem.
             </p>
 
-            <p>
-              Project details can be expanded with specific tools and
-              measurable outcomes where disclosure is permitted.
-            </p>
+            <div class="tag-list">
+              <span class="tag">Multi-application Platform</span>
+              <span class="tag">Dev Team Collaboration</span>
+              <span class="tag">Services</span>
+              <span class="tag">Operations</span>
+            </div>
           </article>
+
         </div>
       </div>
     </section>
 
-    <section id="experience">
+    <!-- Experience -->
+    <section class="alt-bg" id="experience" aria-labelledby="experience-title">
       <div class="container">
-        <div class="section-label">Career Journey</div>
-        <h2>Professional Experience</h2>
 
-        <div class="timeline">
-          <article class="job">
-            <div class="job-date">Sep 2024 – Present</div>
+        <div class="section-heading">
+          <div class="section-label">Career Journey</div>
+          <h2 id="experience-title">Professional experience</h2>
+        </div>
+
+        <div class="experience-list">
+
+          <article class="experience-card card">
             <h3>DevOps Engineer</h3>
-            <div class="job-company">AFAQY</div>
-            <p>
-              Support deployment automation, Kubernetes environments,
-              CI/CD workflows, monitoring, and day-to-day infrastructure operations.
-            </p>
+            <div class="experience-company">AFAQY</div>
+            <div class="experience-date">September 2024 – Present</div>
+            <ul>
+              <li>Manage 3 Kubernetes clusters and support 5 projects, including Nusuk.</li>
+              <li>Deliver applications through GitLab CI/CD pipelines and ArgoCD GitOps.</li>
+              <li>Run event-driven autoscaling with KEDA on Kafka-based workloads.</li>
+              <li>Secure secrets with HashiCorp Vault.</li>
+              <li>Monitor systems and availability with Grafana and Uptime Kuma.</li>
+            </ul>
           </article>
 
-          <article class="job">
-            <div class="job-date">Sep 2021 – Aug 2024</div>
+          <article class="experience-card card">
             <h3>System Administrator</h3>
-            <div class="job-company">AFAQY</div>
+            <div class="experience-company">AFAQY</div>
+            <div class="experience-date">September 2021 – August 2024</div>
             <p>
-              Administered systems and infrastructure services, supporting
-              availability, maintenance, troubleshooting, and operational continuity.
+              Administered IT infrastructure and core services, supporting
+              the day-to-day reliability of the company environment.
             </p>
           </article>
 
-          <article class="job">
-            <div class="job-date">Oct 2019 – Jul 2021</div>
+          <article class="experience-card card">
             <h3>System Engineer</h3>
-            <div class="job-company">Bioxell</div>
+            <div class="experience-company">Bioxell</div>
+            <div class="experience-date">October 2019 – July 2021</div>
             <p>
-              Worked on IT systems and infrastructure support, including
-              troubleshooting and administration tasks.
+              Supported system engineering and IT infrastructure tasks
+              as part of the technical team.
             </p>
           </article>
 
-          <article class="job">
-            <div class="job-date">Oct 2018 – Oct 2019</div>
+          <article class="experience-card card">
             <h3>IT System Administrator</h3>
-            <div class="job-company">New Horizons</div>
-            <p>
-              Supported system administration, user access, endpoint
-              operations, and general IT infrastructure.
-            </p>
+            <div class="experience-company">New Horizons</div>
+            <div class="experience-date">October 2018 – October 2019</div>
+            <p>Supported IT systems and infrastructure administration.</p>
           </article>
 
-          <article class="job">
-            <div class="job-date">Sep 2016 – Oct 2018</div>
+          <article class="experience-card card">
             <h3>IT Support Engineer</h3>
-            <div class="job-company">New Horizons</div>
+            <div class="experience-company">New Horizons</div>
+            <div class="experience-date">September 2016 – October 2018</div>
             <p>
-              Provided technical support, troubleshooting, and assistance
-              with end-user devices and IT services.
+              Provided IT support and resolved day-to-day technical
+              issues across user environments.
             </p>
           </article>
+
         </div>
       </div>
     </section>
 
-    <section id="education">
+    <!-- Education -->
+    <section id="education" aria-labelledby="education-title">
       <div class="container">
-        <div class="section-label">Education</div>
-        <h2>Academic Background</h2>
 
-        <div class="panel">
-          <h3>Cairo University</h3>
-          <p>Faculty of Law · 2016</p>
+        <div class="section-heading">
+          <div class="section-label">Education &amp; Training</div>
+          <h2 id="education-title">Education and professional development</h2>
         </div>
-      </div>
-    </section>
 
-    <section id="contact">
-      <div class="container">
-        <div class="section-label">Get In Touch</div>
+        <div class="education-grid">
 
-        <div class="panel contact-panel">
-          <div>
-            <h2>Let's connect</h2>
+          <article class="education-card card">
+            <h3>Bachelor of Law</h3>
+            <div class="education-meta">Cairo University · 2016</div>
+            <p>Faculty of Law, Cairo University.</p>
+          </article>
+
+          <article class="education-card card">
+            <h3>Advanced Cloud DevOps Training</h3>
+            <div class="education-meta">Professional Training</div>
             <p>
-              For DevOps and IT infrastructure opportunities,
-              feel free to connect with me.
+              Three-month practical training covering DevOps,
+              Linux, Docker, and Kubernetes.
             </p>
-          </div>
+          </article>
 
-          <div class="contact-links">
-            <a class="btn"
-               href="mailto:muhmmedmustafa7@gmail.com">Email Me</a>
+          <article class="education-card card">
+            <h3>DevOps Certification</h3>
+            <div class="education-meta">In Progress</div>
+            <p>Currently studying for a DevOps-focused professional certification.</p>
+          </article>
 
-            <a class="btn btn-secondary"
-               href="https://www.linkedin.com/in/muhammed-mustafa-727745134/"
-               target="_blank" rel="noopener noreferrer">LinkedIn</a>
-
-            <a class="btn btn-secondary"
-               href="https://github.com/MMustafa24"
-               target="_blank" rel="noopener noreferrer">GitHub</a>
-          </div>
         </div>
       </div>
     </section>
+
+    <!-- Contact -->
+    <section class="contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="section-label">Contact</div>
+          <h2 id="contact-title">Let's connect</h2>
+          <p>
+            Feel free to reach out for professional opportunities,
+            DevOps discussions, or infrastructure-related collaboration.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+
+          <div class="contact-card card">
+            <h3>Get in touch</h3>
+
+            <p>
+              I'm open to connecting with professionals and discussing
+              opportunities in DevOps and IT infrastructure.
+            </p>
+
+            <div class="contact-actions">
+              <a
+                class="btn btn-primary"
+                href="https://www.linkedin.com/in/muhammed-mustafa-727745134/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Connect on LinkedIn</a>
+
+              <a class="btn btn-secondary" href="mailto:muhmmedmustafa7@gmail.com">Email Me</a>
+            </div>
+          </div>
+
+          <div class="contact-card card">
+            <h3>Contact information</h3>
+
+            <div class="contact-links">
+
+              <a class="contact-link" href="mailto:muhmmedmustafa7@gmail.com">
+                <strong>Email</strong>
+                <span>muhmmedmustafa7@gmail.com</span>
+              </a>
+
+              <a class="contact-link" href="tel:+201118552460">
+                <strong>Phone</strong>
+                <span>+20 111 855 2460</span>
+              </a>
+
+              <a
+                class="contact-link"
+                href="https://www.linkedin.com/in/muhammed-mustafa-727745134/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <strong>LinkedIn</strong>
+                <span>linkedin.com/in/muhammed-mustafa-727745134</span>
+              </a>
+
+              <a
+                class="contact-link"
+                href="https://github.com/MMustafa24"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <strong>GitHub</strong>
+                <span>github.com/MMustafa24</span>
+              </a>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer>
     <div class="container">
-      © 2026 Muhammed Mustafa. All rights reserved.
+      &copy; <span id="year">2026</span> Muhammed Mustafa. All rights reserved.
     </div>
   </footer>
+
+  <script>
+    (function () {
+      var toggle = document.getElementById('navToggle');
+      var links = document.getElementById('navLinks');
+
+      function setOpen(open) {
+        links.classList.toggle('open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.innerHTML = open ? '&#10005;' : '&#9776;';
+      }
+
+      toggle.addEventListener('click', function () {
+        setOpen(!links.classList.contains('open'));
+      });
+
+      links.addEventListener('click', function (e) {
+        if (e.target.tagName === 'A') setOpen(false);
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') setOpen(false);
+      });
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
 </body>
 </html>
