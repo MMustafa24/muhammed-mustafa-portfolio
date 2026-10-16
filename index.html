@@ -1,1 +1,432 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Muhammed Mustafa's DevOps Engineer portfolio, projects, and technical training.">
+  <title>Muhammed Mustafa | DevOps Engineer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #080c12;
+      --panel: #0e1520;
+      --border: #202c3b;
+      --text: #edf3fa;
+      --muted: #9aa9ba;
+      --green: #a8ff60;
+      --blue: #6ad7ff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background:
+        radial-gradient(ellipse at 85% 5%, #163027 0%, transparent 32%),
+        radial-gradient(ellipse at 5% 35%, #102033 0%, transparent 30%),
+        var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1080px, 90%);
+      margin: auto;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .logo span { color: var(--green); }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .nav-links a:hover { color: var(--green); }
+
+    .hero {
+      min-height: 560px;
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      align-items: center;
+      gap: 55px;
+      padding: 85px 0;
+    }
+
+    .eyebrow {
+      color: var(--green);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(40px, 6vw, 68px);
+      line-height: 1.12;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+    }
+
+    h1 span { color: var(--green); }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 570px;
+      font-size: 16px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 19px;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      font-weight: 600;
+      font-size: 13px;
+      transition: 0.2s;
+    }
+
+    .btn.primary {
+      background: var(--green);
+      color: #0a1007;
+      border-color: var(--green);
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .terminal {
+      background: rgba(14, 21, 32, 0.94);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 80px #0005;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+    }
+
+    .terminal-head {
+      padding: 13px 16px;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      display: flex;
+      gap: 7px;
+      align-items: center;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #425166;
+    }
+
+    .terminal-body {
+      padding: 23px 19px;
+      overflow-wrap: anywhere;
+    }
+
+    .terminal-body p { margin: 9px 0; }
+    .prompt { color: var(--green); }
+    .output { color: var(--blue); }
+    .comment { color: #718096; }
+
+    section { padding: 65px 0; }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--green);
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: 30px;
+      letter-spacing: -0.7px;
+      margin-bottom: 25px;
+    }
+
+    .about-text {
+      color: var(--muted);
+      max-width: 780px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #101925, #0b111a);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 25px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .card:hover {
+      border-color: #577747;
+      transform: translateY(-3px);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .card-icon { font-size: 23px; }
+
+    .tag {
+      color: var(--green);
+      border: 1px solid #30462a;
+      border-radius: 5px;
+      padding: 3px 8px;
+      font-size: 10px;
+      height: fit-content;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    h3 { font-size: 18px; margin-bottom: 10px; }
+
+    .card p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      padding: 9px 13px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: #c9d6e4;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+    }
+
+    .training { margin-top: 18px; }
+
+    .contact-box {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 35px;
+      background: linear-gradient(120deg, #101c21, #0e1520);
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 25px 0;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    @media (max-width: 720px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 65px 0;
+        gap: 35px;
+      }
+
+      .nav-links { gap: 12px; font-size: 11px; }
+      .logo { font-size: 15px; }
+      .grid { grid-template-columns: 1fr; }
+      h1 { letter-spacing: -1.5px; }
+      section { padding: 45px 0; }
+      .contact-box { padding: 24px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <nav>
+      <a class="logo" href="#home">MM<span>.</span>DEVOPS</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <main>
+      <section class="hero" id="home">
+        <div>
+          <div class="eyebrow">// DEVOPS ENGINEER PORTFOLIO</div>
+          <h1>Muhammed<br>Mustafa<span>.</span></h1>
+          <p>
+            DevOps Engineer with a System Administration background,
+            focused on infrastructure, automation, containers, and
+            reliable application delivery.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="#projects">Explore My Work ↘</a>
+            <a class="btn" href="#contact">Get In Touch</a>
+          </div>
+        </div>
+
+        <div class="terminal">
+          <div class="terminal-head">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span style="margin-left: auto">profile.sh</span>
+          </div>
+          <div class="terminal-body">
+            <p><span class="prompt">$</span> whoami</p>
+            <p class="output">Muhammed Mustafa</p>
+            <p><span class="prompt">$</span> cat role.txt</p>
+            <p class="output">DevOps Engineer</p>
+            <p><span class="prompt">$</span> ls focus/</p>
+            <p class="output">linux/ kubernetes/ ci-cd/</p>
+            <p class="output">infrastructure/ automation/</p>
+            <p class="comment"># Always learning. Always improving.</p>
+            <p><span class="prompt">$</span> <span class="output">_</span></p>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="section-label">01 / ABOUT</div>
+        <h2>Building reliable infrastructure.</h2>
+        <p class="about-text">
+          My background in system administration has shaped my approach
+          to DevOps: understand the infrastructure, automate repeatable
+          work, and help teams deliver and operate applications reliably.
+          I continue to develop my skills through hands-on work, technical
+          training, and continuous learning.
+        </p>
+      </section>
+
+      <section id="projects">
+        <div class="section-label">02 / EXPERIENCE</div>
+        <h2>Selected Projects</h2>
+        <div class="grid">
+          <article class="card">
+            <div class="card-top">
+              <span class="card-icon">◈</span>
+              <span class="tag">COMPANY PROJECT</span>
+            </div>
+            <h3>Nusuk Readers Project</h3>
+            <p>
+              Contributed to work associated with the Nusuk Readers
+              project during the Hajj 1447 period. Received a Certificate
+              of Appreciation in recognition of my contribution.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-top">
+              <span class="card-icon">⌘</span>
+              <span class="tag">COMPANY PROJECT</span>
+            </div>
+            <h3>Tepra Ecosystem</h3>
+            <p>
+              A unified portal that brings company projects together,
+              helping users navigate to and access the project they need.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills">
+        <div class="section-label">03 / TECHNICAL TOOLKIT</div>
+        <h2>Technologies & Focus Areas</h2>
+        <div class="skills">
+          <span class="skill">Linux</span>
+          <span class="skill">Docker</span>
+          <span class="skill">Kubernetes</span>
+          <span class="skill">CI/CD</span>
+          <span class="skill">System Administration</span>
+          <span class="skill">Infrastructure</span>
+          <span class="skill">Monitoring</span>
+        </div>
+
+        <div class="card training">
+          <div class="card-top">
+            <span class="card-icon">⌁</span>
+            <span class="tag">3 MONTHS</span>
+          </div>
+          <h3>Advanced Cloud DevOps</h3>
+          <p>
+            Completed a three-month practical training program covering
+            DevOps, Linux, Docker, and Kubernetes, with hands-on tasks
+            and deliverables.
+          </p>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="section-label">04 / CONTACT</div>
+        <div class="contact-box">
+          <h2>Let's connect.</h2>
+          <p>
+            Interested in DevOps, cloud infrastructure, automation,
+            and opportunities to keep learning and building.
+          </p>
+          <div class="actions">
+            <!-- Replace the email below with your real email address. -->
+            <a class="btn primary"
+               href="mailto:YOUR_EMAIL@example.com">Email Me ↗</a>
+            <!-- Add your real LinkedIn and GitHub profile links here. -->
+            <a class="btn"
+               href="https://github.com/MMustafa24"
+               target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © 2026 Muhammed Mustafa · DevOps Engineer Portfolio
+    </footer>
+  </div>
+</body>
+</html>
