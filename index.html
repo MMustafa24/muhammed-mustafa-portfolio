@@ -1,150 +1,353 @@
-<!-- Profile Section -->
-<section class="profile-section">
-  <img
-    src="Warm%20Cinematic%20Corporate%20Headshot.png"
-    alt="Muhammed Mustafa - DevOps Engineer"
-    class="profile-image"
-  />
 
-  <h2>Muhammed Mustafa</h2>
-  <p class="profile-title">DevOps Engineer</p>
-</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Project Section -->
-<section class="project-card">
-  <h3>Nusuk Readers Project</h3>
+  <meta name="description" content="Muhammed Mustafa - DevOps Engineer Portfolio, Kubernetes, CI/CD, Monitoring and Infrastructure Operations.">
 
-  <p>
-    Contributed to monitoring and operational support for the
-    Nusuk Readers project, focusing on application and service
-    availability, log analysis, and troubleshooting operational issues.
-  </p>
+  <title>Muhammed Mustafa | DevOps Engineer</title>
 
-  <h4>Key Responsibilities</h4>
+  <style>
+    :root {
+      --bg: #0b1120;
+      --card: #111b2e;
+      --text: #e5e7eb;
+      --muted: #a7b3c7;
+      --accent: #60a5fa;
+      --border: #25334b;
+    }
 
-  <ul class="responsibilities">
-    <li>
-      Reviewed application logs and investigated errors as part of
-      operational troubleshooting.
-    </li>
+    * {
+      box-sizing: border-box;
+    }
 
-    <li>
-      Monitored application and service availability to identify
-      operational issues.
-    </li>
+    html {
+      scroll-behavior: smooth;
+    }
 
-    <li>
-      Performed additional monitoring activities as part of
-      day-to-day operational support.
-    </li>
-  </ul>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
 
-  <p class="recognition">
-    <strong>Recognition:</strong>
-    Received a Certificate of Appreciation for my contribution
-    to the project during the Hajj 1447 period.
-  </p>
-</section>
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
 
-<style>
-  /* Profile Section */
-  .profile-section {
-    text-align: center;
-    padding: 40px 20px;
-    margin-bottom: 30px;
-  }
+    a:hover {
+      text-decoration: underline;
+    }
 
-  .profile-image {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 50%;
-    border: 4px solid #2563eb;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
-  }
+    .container {
+      width: min(100% - 40px, 1000px);
+      margin: 0 auto;
+    }
 
-  .profile-section h2 {
-    margin: 16px 0 6px;
-    color: #111827;
-    font-size: 28px;
-  }
+    header {
+      padding: 70px 0 55px;
+      text-align: center;
+      background: linear-gradient(180deg, #14223a, var(--bg));
+    }
 
-  .profile-title {
-    color: #2563eb;
-    font-size: 18px;
-    margin: 0;
-  }
-
-  /* Project Card */
-  .project-card {
-    max-width: 850px;
-    margin: 0 auto 30px;
-    padding: 28px;
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
-    border-radius: 16px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  }
-
-  .project-card h3 {
-    color: #111827;
-    margin-top: 0;
-    margin-bottom: 14px;
-    font-size: 24px;
-  }
-
-  .project-card p {
-    color: #4b5563;
-    line-height: 1.8;
-  }
-
-  .project-card h4 {
-    color: #111827;
-    margin-top: 24px;
-    margin-bottom: 12px;
-  }
-
-  .responsibilities {
-    padding-left: 22px;
-    color: #4b5563;
-    line-height: 1.8;
-  }
-
-  .responsibilities li {
-    margin-bottom: 10px;
-  }
-
-  .recognition {
-    background: #eff6ff;
-    border-left: 4px solid #2563eb;
-    padding: 14px 16px;
-    border-radius: 6px;
-    margin-top: 24px;
-  }
-
-  .recognition strong {
-    color: #1d4ed8;
-  }
-
-  /* Mobile Responsive */
-  @media (max-width: 600px) {
     .profile-image {
-      width: 120px;
-      height: 120px;
+      width: 155px;
+      height: 155px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 50%;
+      border: 4px solid var(--accent);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      display: block;
+      margin: 0 auto 22px;
     }
 
-    .profile-section h2 {
-      font-size: 24px;
+    header h1 {
+      font-size: clamp(30px, 5vw, 44px);
+      margin: 0 0 8px;
+      color: #ffffff;
     }
 
-    .project-card {
-      margin: 0 12px 24px;
-      padding: 20px;
-    }
-
-    .project-card h3 {
+    .job-title {
+      color: var(--accent);
       font-size: 21px;
+      margin: 0 0 18px;
     }
-  }
-</style>
+
+    .intro {
+      max-width: 680px;
+      margin: 0 auto;
+      color: var(--muted);
+    }
+
+    .links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 18px;
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      color: #ffffff;
+      transition: background 0.2s;
+    }
+
+    .button:hover {
+      background: #1d3557;
+      text-decoration: none;
+    }
+
+    main {
+      padding: 20px 0 60px;
+    }
+
+    section {
+      margin-bottom: 35px;
+    }
+
+    .section-title {
+      color: #ffffff;
+      font-size: 27px;
+      margin-bottom: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 25px;
+    }
+
+    .card h3 {
+      color: #ffffff;
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 23px;
+    }
+
+    .card h4 {
+      color: var(--accent);
+      margin-top: 25px;
+      margin-bottom: 10px;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+    }
+
+    .responsibilities {
+      padding-left: 22px;
+    }
+
+    .responsibilities li {
+      margin-bottom: 10px;
+    }
+
+    .recognition {
+      margin-top: 24px;
+      padding: 15px 18px;
+      border-left: 4px solid var(--accent);
+      border-radius: 6px;
+      background: #172943;
+      color: #dbeafe;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .skills li {
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      padding: 8px 13px;
+      border-radius: 7px;
+      font-size: 14px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 25px 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: min(100% - 28px, 1000px);
+      }
+
+      header {
+        padding: 45px 0 35px;
+      }
+
+      .profile-image {
+        width: 125px;
+        height: 125px;
+      }
+
+      .job-title {
+        font-size: 18px;
+      }
+
+      .card {
+        padding: 19px;
+      }
+
+      .section-title {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+
+      <img
+        src="https://raw.githubusercontent.com/MMustafa24/muhammed-mustafa-portfolio/main/Warm%20Cinematic%20Corporate%20Headshot.png"
+        alt="Muhammed Mustafa - DevOps Engineer"
+        class="profile-image"
+      >
+
+      <h1>Muhammed Mustafa</h1>
+
+      <p class="job-title">DevOps Engineer</p>
+
+      <p class="intro">
+        DevOps Engineer with hands-on experience in Kubernetes,
+        CI/CD, monitoring, infrastructure operations, log analysis,
+        and troubleshooting. Focused on improving service
+        availability and supporting reliable application environments.
+      </p>
+
+      <div class="links">
+        <a
+          class="button"
+          href="https://github.com/MMustafa24"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>
+
+        <!-- Add your LinkedIn profile URL here -->
+        <a
+          class="button"
+          href="https://www.linkedin.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
+        </a>
+
+        <!-- Replace with your professional email -->
+        <a class="button" href="mailto:YOUR_EMAIL@example.com">
+          Contact Me
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section id="about">
+      <h2 class="section-title">About Me</h2>
+
+      <div class="card">
+        <p>
+          I work on DevOps and infrastructure operations, including
+          Kubernetes environments, CI/CD workflows, monitoring,
+          application troubleshooting, and log analysis. I aim to
+          build my expertise in automation, reliability, and cloud-native
+          technologies.
+        </p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2 class="section-title">Technical Skills</h2>
+
+      <ul class="skills">
+        <li>Linux Administration</li>
+        <li>Kubernetes</li>
+        <li>CI/CD</li>
+        <li>Docker</li>
+        <li>Monitoring</li>
+        <li>Log Analysis</li>
+        <li>Troubleshooting</li>
+        <li>Infrastructure Operations</li>
+        <li>Networking</li>
+      </ul>
+    </section>
+
+    <section id="projects">
+      <h2 class="section-title">Projects & Experience</h2>
+
+      <article class="card">
+        <h3>Nusuk Readers Project</h3>
+
+        <p>
+          Contributed to monitoring and operational support for the
+          Nusuk Readers project, focusing on application and service
+          availability, log analysis, and troubleshooting operational
+          issues.
+        </p>
+
+        <h4>Key Responsibilities</h4>
+
+        <ul class="responsibilities">
+          <li>
+            Reviewed application logs and investigated errors as part
+            of operational troubleshooting.
+          </li>
+
+          <li>
+            Monitored application and service availability to identify
+            operational issues.
+          </li>
+
+          <li>
+            Performed additional monitoring activities as part of
+            day-to-day operational support.
+          </li>
+        </ul>
+
+        <div class="recognition">
+          <strong>Recognition:</strong>
+          Received a Certificate of Appreciation for my contribution
+          to the project during the Hajj 1447 period.
+        </div>
+      </article>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <p>
+      &copy; 2026 Muhammed Mustafa. All rights reserved.
+    </p>
+  </footer>
+
+</body>
+</html>
