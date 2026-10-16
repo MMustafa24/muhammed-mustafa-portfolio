@@ -4,19 +4,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <meta name="description" content="Muhammed Mustafa - DevOps Engineer Portfolio, Kubernetes, CI/CD, Monitoring and Infrastructure Operations.">
-
+  <meta name="description" content="Muhammed Mustafa's DevOps Engineer portfolio, featuring Kubernetes, CI/CD, infrastructure operations, monitoring, and projects.">
   <title>Muhammed Mustafa | DevOps Engineer</title>
 
   <style>
     :root {
-      --bg: #0b1120;
-      --card: #111b2e;
-      --text: #e5e7eb;
-      --muted: #a7b3c7;
-      --accent: #60a5fa;
-      --border: #25334b;
+      --bg: #080d18;
+      --surface: #101827;
+      --surface-light: #152238;
+      --border: #26364e;
+      --text: #e6edf7;
+      --muted: #9eacc1;
+      --accent: #54d6bb;
+      --blue: #70a7ff;
     }
 
     * {
@@ -25,13 +25,14 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 85px;
     }
 
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
       background: var(--bg);
       color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
       line-height: 1.7;
     }
 
@@ -41,160 +42,386 @@
     }
 
     a:hover {
-      text-decoration: underline;
+      color: #a0f3df;
     }
 
     .container {
-      width: min(100% - 40px, 1000px);
+      width: min(1080px, calc(100% - 40px));
       margin: 0 auto;
     }
 
-    header {
-      padding: 70px 0 55px;
+    /* Navigation */
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(8, 13, 24, 0.94);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-inner {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: 17px;
+      font-weight: bold;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .brand span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Hero */
+
+    .hero {
+      padding: 90px 0 80px;
+      background:
+        radial-gradient(
+          ellipse at 50% 0%,
+          rgba(49, 105, 150, 0.18),
+          transparent 65%
+        );
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
       text-align: center;
-      background: linear-gradient(180deg, #14223a, var(--bg));
     }
 
     .profile-image {
       width: 155px;
       height: 155px;
+      display: block;
+      margin: 0 auto 25px;
       object-fit: cover;
       object-position: center;
       border-radius: 50%;
-      border: 4px solid var(--accent);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-      display: block;
-      margin: 0 auto 22px;
+      border: 3px solid var(--accent);
+      box-shadow: 0 0 35px rgba(84, 214, 187, 0.12);
     }
 
-    header h1 {
-      font-size: clamp(30px, 5vw, 44px);
-      margin: 0 0 8px;
+    .eyebrow {
+      color: var(--accent);
+      font-family: Consolas, monospace;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+
+    .hero h1 {
+      margin: 10px 0;
+      font-size: clamp(34px, 6vw, 54px);
+      line-height: 1.2;
       color: #ffffff;
     }
 
-    .job-title {
-      color: var(--accent);
-      font-size: 21px;
-      margin: 0 0 18px;
+    .hero h2 {
+      margin: 12px 0;
+      color: var(--blue);
+      font-size: clamp(19px, 3vw, 25px);
+      font-weight: 500;
     }
 
-    .intro {
-      max-width: 680px;
-      margin: 0 auto;
+    .hero-description {
+      max-width: 690px;
+      margin: 20px auto;
       color: var(--muted);
+      font-size: 16px;
     }
 
-    .links {
+    .hero-actions {
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
+      justify-content: center;
       gap: 12px;
-      margin-top: 25px;
+      margin-top: 28px;
     }
 
     .button {
       display: inline-block;
-      padding: 10px 18px;
+      padding: 11px 20px;
       border: 1px solid var(--accent);
-      border-radius: 8px;
-      color: #ffffff;
-      transition: background 0.2s;
+      border-radius: 7px;
+      color: var(--accent);
+      font-weight: bold;
+      transition: 0.2s ease;
+    }
+
+    .button.primary {
+      color: #07130f;
+      background: var(--accent);
     }
 
     .button:hover {
-      background: #1d3557;
+      transform: translateY(-2px);
       text-decoration: none;
     }
 
+    .button.primary:hover {
+      background: #a0f3df;
+      color: #07130f;
+    }
+
+    /* General sections */
+
     main {
-      padding: 20px 0 60px;
+      padding: 30px 0 65px;
     }
 
-    section {
-      margin-bottom: 35px;
+    .section {
+      padding-top: 48px;
     }
 
-    .section-title {
+    .section-heading {
+      margin: 0 0 8px;
+      font-size: 28px;
       color: #ffffff;
-      font-size: 27px;
-      margin-bottom: 18px;
+    }
+
+    .section-heading::before {
+      content: "// ";
+      color: var(--accent);
+      font-family: Consolas, monospace;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      margin: 0 0 24px;
     }
 
     .card {
-      background: var(--card);
+      background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 25px;
+      border-radius: 12px;
+      padding: 26px;
     }
 
-    .card h3 {
-      color: #ffffff;
-      margin-top: 0;
-      margin-bottom: 12px;
-      font-size: 23px;
-    }
-
-    .card h4 {
-      color: var(--accent);
-      margin-top: 25px;
-      margin-bottom: 10px;
-    }
-
-    .card p,
-    .card li {
+    .card p {
       color: var(--muted);
+      margin-top: 0;
+    }
+
+    /* Skills */
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 15px;
+    }
+
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 19px;
+    }
+
+    .skill-card h3 {
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-size: 16px;
+    }
+
+    .skill-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Projects */
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-label {
+      color: var(--accent);
+      font-family: Consolas, monospace;
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .project-card h3 {
+      margin: 0 0 12px;
+      color: #ffffff;
+      font-size: 21px;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      margin: 0 0 16px;
+    }
+
+    .project-card h4 {
+      color: var(--blue);
+      margin: 12px 0 8px;
+      font-size: 14px;
     }
 
     .responsibilities {
-      padding-left: 22px;
+      color: var(--muted);
+      padding-left: 20px;
+      margin: 0 0 18px;
+      font-size: 14px;
     }
 
     .responsibilities li {
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .recognition {
-      margin-top: 24px;
-      padding: 15px 18px;
-      border-left: 4px solid var(--accent);
-      border-radius: 6px;
-      background: #172943;
-      color: #dbeafe;
+      margin-top: auto;
+      padding: 13px;
+      border-left: 3px solid var(--accent);
+      border-radius: 5px;
+      background: var(--surface-light);
+      color: #c9f8eb;
+      font-size: 14px;
     }
 
-    .skills {
+    .project-note {
+      margin-top: auto;
+      padding-top: 14px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Training */
+
+    .training-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+    }
+
+    .training-icon {
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--accent);
+      font-size: 22px;
+    }
+
+    .training-card h3 {
+      margin: 0 0 6px;
+      color: #ffffff;
+    }
+
+    .training-meta {
+      color: var(--accent);
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .training-card p {
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    /* Contact and footer */
+
+    .contact-card {
+      text-align: center;
+    }
+
+    .contact-card p {
+      max-width: 600px;
+      margin: 0 auto 22px;
+    }
+
+    .contact-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      padding: 0;
-      list-style: none;
-    }
-
-    .skills li {
-      border: 1px solid var(--border);
-      background: var(--card);
-      color: var(--text);
-      padding: 8px 13px;
-      border-radius: 7px;
-      font-size: 14px;
+      justify-content: center;
+      gap: 12px;
     }
 
     footer {
       border-top: 1px solid var(--border);
-      padding: 25px 20px;
       text-align: center;
+      padding: 24px 15px;
       color: var(--muted);
-      font-size: 14px;
+      font-size: 13px;
     }
 
-    @media (max-width: 600px) {
-      .container {
-        width: min(100% - 28px, 1000px);
+    footer p {
+      margin: 0;
+    }
+
+    /* Responsive layout */
+
+    @media (max-width: 760px) {
+      .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      header {
-        padding: 45px 0 35px;
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-inner {
+        padding: 14px 0;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        justify-content: center;
+        gap: 12px 18px;
+      }
+
+      .hero {
+        padding: 60px 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        width: calc(100% - 28px);
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
       }
 
       .profile-image {
@@ -202,16 +429,17 @@
         height: 125px;
       }
 
-      .job-title {
-        font-size: 18px;
+      .section-heading {
+        font-size: 24px;
       }
 
-      .card {
+      .card,
+      .project-card {
         padding: 19px;
       }
 
-      .section-title {
-        font-size: 24px;
+      .training-card {
+        flex-direction: column;
       }
     }
   </style>
@@ -219,49 +447,57 @@
 
 <body>
 
-  <header>
-    <div class="container">
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="#home">
+        Muhammed<span>.</span> Mustafa
+      </a>
+
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#training">Training</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero" id="home">
+    <div class="container hero-content">
 
       <img
         src="https://raw.githubusercontent.com/MMustafa24/muhammed-mustafa-portfolio/main/Warm%20Cinematic%20Corporate%20Headshot.png"
-        alt="Muhammed Mustafa - DevOps Engineer"
+        alt="Muhammed Mustafa, DevOps Engineer"
         class="profile-image"
       >
 
+      <p class="eyebrow">WELCOME TO MY PORTFOLIO</p>
+
       <h1>Muhammed Mustafa</h1>
 
-      <p class="job-title">DevOps Engineer</p>
+      <h2>DevOps Engineer</h2>
 
-      <p class="intro">
-        DevOps Engineer with hands-on experience in Kubernetes,
-        CI/CD, monitoring, infrastructure operations, log analysis,
-        and troubleshooting. Focused on improving service
-        availability and supporting reliable application environments.
+      <p class="hero-description">
+        Working across infrastructure operations, Kubernetes,
+        CI/CD, monitoring, and troubleshooting to help maintain
+        reliable application and service environments.
       </p>
 
-      <div class="links">
+      <div class="hero-actions">
+        <a href="#projects" class="button primary">
+          Explore My Projects
+        </a>
+
         <a
-          class="button"
           href="https://github.com/MMustafa24"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub
-        </a>
-
-        <!-- Add your LinkedIn profile URL here -->
-        <a
           class="button"
-          href="https://www.linkedin.com/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          LinkedIn
-        </a>
-
-        <!-- Replace with your professional email -->
-        <a class="button" href="mailto:YOUR_EMAIL@example.com">
-          Contact Me
+          GitHub Profile
         </a>
       </div>
 
@@ -270,82 +506,256 @@
 
   <main class="container">
 
-    <section id="about">
-      <h2 class="section-title">About Me</h2>
+    <!-- About -->
+    <section class="section" id="about">
+      <h2 class="section-heading">About Me</h2>
+
+      <p class="section-subtitle">
+        A brief introduction to my professional background.
+      </p>
 
       <div class="card">
         <p>
-          I work on DevOps and infrastructure operations, including
-          Kubernetes environments, CI/CD workflows, monitoring,
-          application troubleshooting, and log analysis. I aim to
-          build my expertise in automation, reliability, and cloud-native
-          technologies.
+          I am a DevOps Engineer with hands-on experience in
+          infrastructure operations, Kubernetes environments,
+          monitoring, log analysis, and operational troubleshooting.
+        </p>
+
+        <p>
+          My work includes supporting application and service
+          availability, investigating errors, and contributing to
+          day-to-day operational activities. I am continuing to
+          develop my skills in automation, container orchestration,
+          and cloud-native technologies.
         </p>
       </div>
     </section>
 
-    <section id="skills">
-      <h2 class="section-title">Technical Skills</h2>
+    <!-- Skills -->
+    <section class="section" id="skills">
+      <h2 class="section-heading">Technical Toolkit</h2>
 
-      <ul class="skills">
-        <li>Linux Administration</li>
-        <li>Kubernetes</li>
-        <li>CI/CD</li>
-        <li>Docker</li>
-        <li>Monitoring</li>
-        <li>Log Analysis</li>
-        <li>Troubleshooting</li>
-        <li>Infrastructure Operations</li>
-        <li>Networking</li>
-      </ul>
+      <p class="section-subtitle">
+        Technologies and areas relevant to my practical work and training.
+      </p>
+
+      <div class="skills-grid">
+
+        <div class="skill-card">
+          <h3>Linux & Infrastructure</h3>
+          <p>
+            Linux administration, infrastructure operations,
+            service troubleshooting, and system support.
+          </p>
+        </div>
+
+        <div class="skill-card">
+          <h3>Kubernetes</h3>
+          <p>
+            Kubernetes environments, cluster operations,
+            and container orchestration.
+          </p>
+        </div>
+
+        <div class="skill-card">
+          <h3>Containers</h3>
+          <p>
+            Docker, container concepts, and containerized workloads.
+          </p>
+        </div>
+
+        <div class="skill-card">
+          <h3>CI/CD</h3>
+          <p>
+            Continuous integration and delivery workflows
+            and deployment pipeline concepts.
+          </p>
+        </div>
+
+        <div class="skill-card">
+          <h3>Monitoring & Logs</h3>
+          <p>
+            Service availability monitoring, log analysis,
+            error investigation, and troubleshooting.
+          </p>
+        </div>
+
+        <div class="skill-card">
+          <h3>Operations</h3>
+          <p>
+            Operational support, issue investigation,
+            and application service reliability.
+          </p>
+        </div>
+
+      </div>
     </section>
 
-    <section id="projects">
-      <h2 class="section-title">Projects & Experience</h2>
+    <!-- Selected Projects -->
+    <section class="section" id="projects">
+      <h2 class="section-heading">Selected Projects</h2>
 
-      <article class="card">
-        <h3>Nusuk Readers Project</h3>
+      <p class="section-subtitle">
+        Selected project experience and operational contributions.
+      </p>
 
+      <div class="projects-grid">
+
+        <!-- Nusuk Readers -->
+        <article class="project-card">
+          <span class="project-label">PROJECT 01</span>
+
+          <h3>Nusuk Readers Project</h3>
+
+          <p>
+            Contributed to monitoring and operational support for
+            the Nusuk Readers project, focusing on application and
+            service availability, log analysis, and troubleshooting
+            operational issues.
+          </p>
+
+          <h4>Key Responsibilities</h4>
+
+          <ul class="responsibilities">
+            <li>
+              Reviewed application logs and investigated errors
+              as part of operational troubleshooting.
+            </li>
+
+            <li>
+              Monitored application and service availability
+              to identify operational issues.
+            </li>
+
+            <li>
+              Performed additional monitoring activities as part
+              of day-to-day operational support.
+            </li>
+          </ul>
+
+          <div class="recognition">
+            <strong>Recognition:</strong>
+            Received a Certificate of Appreciation for my
+            contribution to the project during the Hajj 1447 period.
+          </div>
+        </article>
+
+        <!-- Tepra Ecosystem -->
+        <article class="project-card">
+          <span class="project-label">PROJECT 02</span>
+
+          <h3>Tepra Ecosystem</h3>
+
+          <p>
+            A unified portal initiative designed to bring company
+            projects together under one ecosystem.
+          </p>
+
+          <h4>Project Overview</h4>
+
+          <ul class="responsibilities">
+            <li>
+              Unified portal concept for bringing multiple company
+              projects under one umbrella.
+            </li>
+
+            <li>
+              Part of my broader company project experience.
+            </li>
+          </ul>
+
+          <p class="project-note">
+            Detailed technical responsibilities and implementation
+            scope can be added once confirmed.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Training -->
+    <section class="section" id="training">
+      <h2 class="section-heading">Training & Development</h2>
+
+      <p class="section-subtitle">
+        Structured learning and hands-on technical development.
+      </p>
+
+      <div class="card training-card">
+
+        <div class="training-icon" aria-hidden="true">
+          &lt;/&gt;
+        </div>
+
+        <div>
+          <h3>Advanced Cloud DevOps Training</h3>
+
+          <div class="training-meta">
+            Ministry of Communications · 3 Months
+          </div>
+
+          <p>
+            Completed a three-month training program focused on
+            DevOps fundamentals and cloud-related technologies,
+            including Linux, Docker, and Kubernetes.
+          </p>
+
+          <p>
+            The program included hands-on tasks, practical
+            deliverables, and a training completion certificate.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+      <h2 class="section-heading">Get In Touch</h2>
+
+      <div class="card contact-card">
         <p>
-          Contributed to monitoring and operational support for the
-          Nusuk Readers project, focusing on application and service
-          availability, log analysis, and troubleshooting operational
-          issues.
+          Interested in DevOps, infrastructure, Kubernetes,
+          and opportunities to build reliable systems.
+          Feel free to connect with me professionally.
         </p>
 
-        <h4>Key Responsibilities</h4>
+        <div class="contact-links">
+          <a
+            class="button primary"
+            href="https://github.com/MMustafa24"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
 
-        <ul class="responsibilities">
-          <li>
-            Reviewed application logs and investigated errors as part
-            of operational troubleshooting.
-          </li>
+          <!-- Replace with your actual LinkedIn profile URL -->
+          <a
+            class="button"
+            href="https://www.linkedin.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
 
-          <li>
-            Monitored application and service availability to identify
-            operational issues.
-          </li>
-
-          <li>
-            Performed additional monitoring activities as part of
-            day-to-day operational support.
-          </li>
-        </ul>
-
-        <div class="recognition">
-          <strong>Recognition:</strong>
-          Received a Certificate of Appreciation for my contribution
-          to the project during the Hajj 1447 period.
+          <!-- Replace with your professional email -->
+          <a
+            class="button"
+            href="mailto:YOUR_EMAIL@example.com"
+          >
+            Email Me
+          </a>
         </div>
-      </article>
-
+      </div>
     </section>
 
   </main>
 
   <footer>
     <p>
-      &copy; 2026 Muhammed Mustafa. All rights reserved.
+      &copy; 2026 Muhammed Mustafa · DevOps Engineer
     </p>
   </footer>
 
